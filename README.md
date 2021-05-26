@@ -1,2 +1,2 @@
 # bugtracker-cli
-A CLI Bugtracker in C++ for Linux.
+A CLI Bugtracker for Linux.
