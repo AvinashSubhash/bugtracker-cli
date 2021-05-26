@@ -1,0 +1,16 @@
+Database Tables
+
+	1. Bug-Info
+		Columns:
+			1. BUG_ID       ##datatype: 12 Digit integer
+			2. Bug_Name     ##datatype: 20 char string
+			3. Bug_Section  ##datatype: Single Digit Integer
+			4. Description  ##datatype: max 100 char string
+			5. Importance   ##datatype: Single Digit INteger (1-5)
+
+	2. Date-Info
+		Columns:
+			1. BUG_ID
+			2. Opening_Date
+			3. Closing_Date
+			4. No_of_Days
