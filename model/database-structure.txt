@@ -19,9 +19,9 @@ Database Tables
 sqlite3 Datatype:
 
 	BUG_ID: INT
-	Bug_Name: CHAR(20)
+	Bug_Name: VARCHAR
 	Bug_Section: INT
-	Description: CHAR(100)
+	Description: VARCHAR
 	Importance: INT
 	Project_Name: INT
 
