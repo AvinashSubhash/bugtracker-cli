@@ -3,7 +3,7 @@ import sqlite3
 class DatabaseHandler:
 
     def __init__(self):
-        db = sqlite3.connect('bug-tracker.db')
+        self.db = sqlite3.connect('bug-tracker.db')
 
     def CreateDatabase(self):
     
