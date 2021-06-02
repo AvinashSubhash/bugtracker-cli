@@ -34,6 +34,9 @@ class DataManipulation:
 
         return key
 
+    def UpdateDatabase(self):
+        pass
+
 sp = DataManipulation()
 print(sp.IDGenerattor())
 
