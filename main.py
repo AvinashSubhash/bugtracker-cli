@@ -1,4 +1,5 @@
 import os
+import time
 from model import database_handler
 from controller import data_manipulator
 while True:
@@ -19,7 +20,22 @@ while True:
     else:
         print('')
         print("Updating Database. . .")
+        control.UpdateDatabase()
         print('')
-        #db.GetData()
+    time.sleep (2)
+    while True:
+        print("Main Menu:")
+        print("\n 1. Add a bug\n 2. View all bugs\n 3. Modify a bug\n\nOption:",end='')
+        num = int(input())
+        if num == 1:
+            control.AddData()
+        elif num == 2:
+            control.DisplayData()
+        elif num == 3:
+            os.system('clear')
+            control.ModifyData()
+        else:
+            os.system('clear')
+            print("\n Invalid Option!! \n")
     break
 

@@ -19,7 +19,6 @@ class DatabaseHandler:
         pass
 
     def ModifyData(self):
-        pass
-
+        print("Database Handler Modify function accessed. .")
 
 
