@@ -36,14 +36,23 @@ class DataManipulation:
 
         return key
 
+    def OpeningDate(self):
+        return ""+str(time.localtime()[2])+"-"+str(time.localtime()[1])+"-"+str(time.localtime()[0])
+
     def UpdateDatabase(self):
+        print("Data Manipulator Update Database Function Accessed. .")
         self.db.ModifyData()
+
 
     def DisplayData(self):
         self.db.GetData()
         #will take raw data from database and then display it in a table format.
-    def AddData(self):
-        self.db.InsertData()
+    def AddData(self,data_list):
+        data_list.append(self.IDGenerattor())
+        data_list.append(self.OpeningDate())
+        data_list.append('-')
+        data_list.append(0)
+        self.db.InsertData(data_list)
         #will change the data type into appropriate format and pass it to datbase handler
     def ModifyData(self):
         self.db.ModifyData()

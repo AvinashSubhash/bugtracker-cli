@@ -15,8 +15,9 @@ class DatabaseHandler:
         data = self.db.execute('SELECT * FROM DATE;')
         return data.fetchall()
 
-    def InsertData(self):
-        pass
+    def InsertData(self,data):
+        print("Database Handler Insert function accessed. .")
+        print(data)
 
     def ModifyData(self):
         print("Database Handler Modify function accessed. .")
