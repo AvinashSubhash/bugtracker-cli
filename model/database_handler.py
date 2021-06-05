@@ -12,13 +12,18 @@ class DatabaseHandler:
         print('--database creation successful---')
     def GetData(self):
         
-        data = self.db.execute('SELECT * FROM DATE;')
+        data = self.db.execute('SELECT * FROM BUGTRACKER;')
         return data.fetchall()
 
     def InsertData(self,data):
         print("Database Handler Insert function accessed. .")
         print(data)
-
+        #try:
+        string1 = str("INSERT INTO BUGTRACKER VALUES("+str(data[5])+", '"+str(data[0])+"', "+str(2)+", '"+str(data[4])+"', "+str(5)+", '"+str(data[1])+"');")
+        print(string1)
+        self.db.execute(string1)
+        """except:
+            print("Data could not be added. .")"""
     def ModifyData(self):
         print("Database Handler Modify function accessed. .")
 

@@ -45,7 +45,7 @@ class DataManipulation:
 
 
     def DisplayData(self):
-        self.db.GetData()
+        print(self.db.GetData())
         #will take raw data from database and then display it in a table format.
     def AddData(self,data_list):
         data_list.append(self.IDGenerattor())

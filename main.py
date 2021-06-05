@@ -26,7 +26,6 @@ while True:
     count=0
     os.system('clear')
     #path = os.getcwd()
-    control = data_manipulator.DataManipulation()
     print("BUGTRACKER-CLI v1.0")
 
 
@@ -36,7 +35,9 @@ while True:
         print("Initializing Database. . .")
         db = database_handler.DatabaseHandler()
         db.CreateDatabase()
+        control = data_manipulator.DataManipulation()
     else:
+        control = data_manipulator.DataManipulation()
         print('')
         print("Updating Database. . .")
         control.UpdateDatabase()
