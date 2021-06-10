@@ -1,5 +1,6 @@
 
-import time 
+import time
+import os 
 from model import database_handler
 class DataManipulation:
 
@@ -10,8 +11,12 @@ class DataManipulation:
         self.hour = str(time.localtime()[3])
         self.minute = str(time.localtime()[4])
         self.seconds = str(time.localtime()[5])
-        self.db = database_handler.DatabaseHandler()
+        self.db = 0
         #print(self.seconds)
+
+    def InitializeTables(self):
+        self.db = database_handler.DatabaseHandler()
+        self.db.CreateDatabase()
 
     def IDGenerattor(self):
         key =''
@@ -40,12 +45,14 @@ class DataManipulation:
         return ""+str(time.localtime()[2])+"-"+str(time.localtime()[1])+"-"+str(time.localtime()[0])
 
     def UpdateDatabase(self):
+        self.db = database_handler.DatabaseHandler()
         print("Data Manipulator Update Database Function Accessed. .")
         self.db.ModifyData()
 
 
     def DisplayData(self):
-        print(self.db.GetData())
+        data_recv = self.db.GetData()
+        os.system('clear')
         #will take raw data from database and then display it in a table format.
     def AddData(self,data_list):
         data_list.append(self.IDGenerattor())

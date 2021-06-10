@@ -1,8 +1,8 @@
 import os
 import time
-from model import database_handler
 from controller import data_manipulator
-
+#print('*')
+control = data_manipulator.DataManipulation()
 def GetDetails():
     data1=[]
     while len(data1) !=4 :
@@ -20,24 +20,25 @@ def GetDetails():
             break
     return data1
 
-
+#print('*')
+db = 0
 while True:
 
     count=0
     os.system('clear')
     #path = os.getcwd()
     print("BUGTRACKER-CLI v1.0")
-
+    #print('*')
 
     files = list(os.listdir('model'))
     if 'bug-tracker.db' not in files:
         print("")
         print("Initializing Database. . .")
-        db = database_handler.DatabaseHandler()
-        db.CreateDatabase()
-        control = data_manipulator.DataManipulation()
+        control.InitializeTables()
+        #print('*')
     else:
-        control = data_manipulator.DataManipulation()
+        
+        #print('*')
         print('')
         print("Updating Database. . .")
         control.UpdateDatabase()

@@ -32,3 +32,8 @@ sqlite3 Datatype:
 PrimaryKey BUG_ID: <format>:  #sshhddMMyymm
 	
 	ss:Seconds; hh:Hour(24-hour-format); dd:day; MM:month; yy:year; mm:minutes;
+
+Sample Input:
+
+		bug-display-error bugtracker-cli display high
+		Bug-tracker is not displaying the data in correct format. 
