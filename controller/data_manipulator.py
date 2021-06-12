@@ -51,8 +51,17 @@ class DataManipulation:
 
 
     def DisplayData(self):
-        data_recv = self.db.GetData()
         os.system('clear')
+        data_1 = self.db.GetData()
+        data_1 = data_1[0]
+        print("BUG_ID: ",data_1[0],"    ",end='')
+        print("BUG_NAME: ",data_1[1])
+        print("BUG_SECTION",data_1[2])
+        print("DESCRIPTION",data_1[3])
+        print("IMPORTANCE: ",data_1[4])
+        print("PROJECT_NAME: ",data_1[5])
+        print("")
+        print("")
         #will take raw data from database and then display it in a table format.
     def AddData(self,data_list):
         data_list.append(self.IDGenerattor())
@@ -63,6 +72,9 @@ class DataManipulation:
         #will change the data type into appropriate format and pass it to datbase handler
     def ModifyData(self):
         self.db.ModifyData()
+
+    def CloseConnection(self):
+        self.db.Disconnect()
         
         
 

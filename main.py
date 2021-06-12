@@ -45,7 +45,7 @@ while True:
         print('')
     while True:
         print("Main Menu:")
-        print("\n 1. Add a bug\n 2. View all bugs\n 3. Modify a bug\n\nOption:",end='')
+        print("\n 1. Add a bug\n 2. View all bugs\n 3. Modify a bug\n 4. Exit\n\nOption:",end='')
         try:
             num = int(input())
         except:
@@ -57,6 +57,10 @@ while True:
         elif num == 3:
             os.system('clear')
             control.ModifyData()
+        elif num == 4:
+            control.CloseConnection()
+            os.system('clear')
+            exit(0)
         else:
             os.system('clear')
             print("\n Invalid Option!! \n")
