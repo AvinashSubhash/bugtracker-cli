@@ -29,8 +29,10 @@ class DatabaseHandler:
         except:
             print("Data could not be added. .")
         
-    def ModifyData(self):
+    def ModifyData(self,data_index,data_value):
         print("Database Handler Modify function accessed. .")
+        print("Data Index: ",data_index)
+        print("Data Values: ",data_value)
 
     def Disconnect(self):
         self.db.commit()

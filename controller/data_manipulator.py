@@ -47,9 +47,19 @@ class DataManipulation:
     def UpdateDatabase(self):
         self.db = database_handler.DatabaseHandler()
         print("Data Manipulator Update Database Function Accessed. .")
-        self.db.ModifyData()
+        #self.db.ModifyData()
 
-
+    def DisplayNames(self):
+        file1 = open('controller/name_to_index.txt','r')
+        [projectnames,bugsection] = file1.readlines()
+        projectnames = projectnames.split(' ')
+        bugsection = bugsection.split(' ')
+        print("Project names:")
+        for i in projectnames:
+            print(i)
+        print("Bug Sections:")    
+        for i in bugsection:
+            print(i)
     def DisplayData(self):
         os.system('clear')
         data_1 = self.db.GetData()
@@ -70,8 +80,8 @@ class DataManipulation:
         data_list.append(0)
         self.db.InsertData(data_list)
         #will change the data type into appropriate format and pass it to datbase handler
-    def ModifyData(self):
-        self.db.ModifyData()
+    def ModifyData(self,data_index,data_value):
+        self.db.ModifyData(data_index,data_value)
 
     def CloseConnection(self):
         self.db.Disconnect()

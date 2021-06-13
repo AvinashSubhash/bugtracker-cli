@@ -56,13 +56,19 @@ while True:
             control.DisplayData()
         elif num == 3:
             os.system('clear')
-            control.ModifyData()
+            print("Enter the index number of column to be edited:")
+            data_index = input().split(' ')
+            data_index = [int(i) for i in data_index]
+            print("Enter the data in appropriate format ans spaces:")
+            data_value = input().split(' ')
+            control.ModifyData(data_index,data_value)
         elif num == 4:
             control.CloseConnection()
             os.system('clear')
             exit(0)
         else:
             os.system('clear')
+            #control.DisplayNames()
             print("\n Invalid Option!! \n")
     break
 
