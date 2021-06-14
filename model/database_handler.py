@@ -28,7 +28,10 @@ class DatabaseHandler:
             
         except:
             print("Data could not be added. .")
-        
+
+    def UpdateDatabase(self):
+        print("Default modifier function for changing dated and values")    
+    
     def ModifyData(self,data_index,data_value):
         print("Database Handler Modify function accessed. .")
         print("Data Index: ",data_index)

@@ -47,7 +47,7 @@ class DataManipulation:
     def UpdateDatabase(self):
         self.db = database_handler.DatabaseHandler()
         print("Data Manipulator Update Database Function Accessed. .")
-        #self.db.ModifyData()
+        self.db.UpdateDatabase()
 
     def DisplayNames(self):
         file1 = open('controller/name_to_index.txt','r')
@@ -66,10 +66,10 @@ class DataManipulation:
         data_1 = data_1[0]
         print("BUG_ID: ",data_1[0],"    ",end='')
         print("BUG_NAME: ",data_1[1])
-        print("BUG_SECTION",data_1[2])
-        print("DESCRIPTION",data_1[3])
-        print("IMPORTANCE: ",data_1[4])
-        print("PROJECT_NAME: ",data_1[5])
+        print("BUG_SECTION: ",data_1[2])
+        print("DESCRIPTION: ",data_1[3])
+        print("IMPORTANCE:  ",data_1[4])
+        print("PROJECT_NAME:",data_1[5])
         print("")
         print("")
         #will take raw data from database and then display it in a table format.
