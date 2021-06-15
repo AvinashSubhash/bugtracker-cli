@@ -46,7 +46,7 @@ class DataManipulation:
 
     def UpdateDatabase(self):
         self.db = database_handler.DatabaseHandler()
-        print("Data Manipulator Update Database Function Accessed. .")
+        #print("Data Manipulator Update Database Function Accessed. .")
         self.db.UpdateDatabase()
 
     def DisplayNames(self):
@@ -60,6 +60,31 @@ class DataManipulation:
         print("Bug Sections:")    
         for i in bugsection:
             print(i)
+    
+    def NameToIndex(self,projectname, bugsection):
+        file1 = open('controller/name_to_index.txt','r')
+        [projectnames,bugsections] = file1.readlines()
+        file1.close()
+        file1 = open('controller/name_to_index.txt','w')
+        projectnames = projectnames.split(' ')
+        bugsections = bugsections.split(' ')
+        if projectname not in projectnames:
+            print("New Project Identified, Adding to List. . .")
+            projectnames.append(projectname)
+            pn=''
+            for i in projectnames:
+                pn += i
+                pn += ' '
+            #file1.writelines(pn)
+        if bugsection not in bugsections:
+            print("New Bug Section Identified, Adding to list. . .")
+            bugsections.append(bugsection)
+            bs=''
+            for i in bugsections:
+                bs += i
+                bs += ' '
+        file1.writelines(list((bs,pn)))
+
 
     def DisplayData(self):
         os.system('clear')
@@ -76,6 +101,7 @@ class DataManipulation:
         #will take raw data from database and then display it in a table format.
 
     def AddData(self,data_list):
+        self.NameToIndex(data_list[1],data_list[2])
         data_list.append(self.IDGenerattor())
         data_list.append(self.OpeningDate())
         data_list.append('-')

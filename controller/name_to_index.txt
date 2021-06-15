@@ -1,2 +1,2 @@
-project1 project2 project3
-bugsection1 bugsection2 bugsection3
+bugtracker-cli
+display data-access calculation network

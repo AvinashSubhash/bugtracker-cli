@@ -19,7 +19,7 @@ class DatabaseHandler:
 
     def InsertData(self,data):
         
-        print("Database Handler Insert function accessed. .")
+        #print("Database Handler Insert function accessed. .")
         print(data)
         try:
             string1 = str("INSERT INTO BUGTRACKER VALUES("+str(data[5])+", '"+str(data[0])+"', "+str(2)+", '"+str(data[4])+"', "+str(5)+", '"+str(data[1])+"');")
@@ -30,7 +30,8 @@ class DatabaseHandler:
             print("Data could not be added. .")
 
     def UpdateDatabase(self):
-        print("Default modifier function for changing dated and values")  
+        pass
+        #print("Default modifier function for changing dated and values")  
 
     def CheckEntry(self):
         string1="SELECT BUG_ID FROM BUGTRACKER;"
@@ -38,7 +39,7 @@ class DatabaseHandler:
         return list(data1.fetchall()[0]) 
     
     def ModifyData(self,data_index,data_value):
-        print("Database Handler Modify function accessed. .")
+        #print("Database Handler Modify function accessed. .")
         print("Data Index: ",data_index)
         print("Data Values: ",data_value)
 
