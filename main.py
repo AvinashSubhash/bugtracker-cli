@@ -56,12 +56,22 @@ while True:
             control.DisplayData()
         elif num == 3:
             os.system('clear')
-            print("Enter the index number of column to be edited:")
-            data_index = input().split(' ')
-            data_index = [int(i) for i in data_index]
-            print("Enter the data in appropriate format ans spaces:")
-            data_value = input().split(' ')
-            control.ModifyData(data_index,data_value)
+            print("Column names: ")
+            print("1:BUGNAME      2:BUG_SECTION    3:DESCRIPTION")
+            print("4:IMPORTANCE   5:PROJECT_NAME   6:CLOSING_DATE")
+            print("\n\nEnter the BUG_ID of the entry:")
+            bug_id=int(input())
+            if control.CheckEntry(bug_id):
+                print("\n\nEnter the index number of column to be edited:")
+                data_index = input().split(' ')
+                data_index = [int(i) for i in data_index]
+                print("Enter the data in appropriate format ans spaces:")
+                data_value = input().split(' ')
+                control.ModifyData(data_index,data_value)
+            else:
+                print("Sorry. . no such entry found :-(")
+                time.sleep(3)
+                os.system('clear')
         elif num == 4:
             control.CloseConnection()
             os.system('clear')

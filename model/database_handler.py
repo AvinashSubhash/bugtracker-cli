@@ -30,7 +30,12 @@ class DatabaseHandler:
             print("Data could not be added. .")
 
     def UpdateDatabase(self):
-        print("Default modifier function for changing dated and values")    
+        print("Default modifier function for changing dated and values")  
+
+    def CheckEntry(self):
+        string1="SELECT BUG_ID FROM BUGTRACKER;"
+        data1 = self.db.execute(string1)
+        return list(data1.fetchall()[0]) 
     
     def ModifyData(self,data_index,data_value):
         print("Database Handler Modify function accessed. .")

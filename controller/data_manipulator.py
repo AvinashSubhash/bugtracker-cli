@@ -60,6 +60,7 @@ class DataManipulation:
         print("Bug Sections:")    
         for i in bugsection:
             print(i)
+
     def DisplayData(self):
         os.system('clear')
         data_1 = self.db.GetData()
@@ -73,6 +74,7 @@ class DataManipulation:
         print("")
         print("")
         #will take raw data from database and then display it in a table format.
+
     def AddData(self,data_list):
         data_list.append(self.IDGenerattor())
         data_list.append(self.OpeningDate())
@@ -80,13 +82,19 @@ class DataManipulation:
         data_list.append(0)
         self.db.InsertData(data_list)
         #will change the data type into appropriate format and pass it to datbase handler
+
     def ModifyData(self,data_index,data_value):
         self.db.ModifyData(data_index,data_value)
 
+    def CheckEntry(self,bug_id):
+        if bug_id in self.db.CheckEntry():
+            return True
+        return False
+    
     def CloseConnection(self):
         self.db.Disconnect()
         
-        
+    
 
 
 sp = DataManipulation()
