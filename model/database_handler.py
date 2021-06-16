@@ -5,6 +5,7 @@ class DatabaseHandler:
     def __init__(self):
         #print("DatabaseHandler init function accessed . .")
         self.db = sqlite3.connect('model/bug-tracker.db')
+        self.column_list = ['BUG_ID','BUG_NAME','BUG_SECTION','DESCRIPTION','IMPORTANCE','PROJECT_NAME','CLOSING_DATE']
 
     def CreateDatabase(self):
     
@@ -38,10 +39,12 @@ class DatabaseHandler:
         data1 = self.db.execute(string1)
         return list(data1.fetchall()[0]) 
     
-    def ModifyData(self,data_index,data_value):
+    def ModifyData(self,data_index,data_value,id):
         #print("Database Handler Modify function accessed. .")
         print("Data Index: ",data_index)
         print("Data Values: ",data_value)
+        self.db.execute("")
+
 
     def Disconnect(self):
         self.db.commit()

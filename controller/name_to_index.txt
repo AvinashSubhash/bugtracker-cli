@@ -1,2 +1,3 @@
-bugtracker-cli
-display data-access calculation network
+ bugtracker-cli  
+ u
+ display calculation database h

@@ -67,7 +67,7 @@ while True:
                 data_index = [int(i) for i in data_index]
                 print("Enter the data in appropriate format ans spaces:")
                 data_value = input().split(' ')
-                control.ModifyData(data_index,data_value)
+                control.ModifyData(data_index,data_value,bug_id)
             else:
                 print("Sorry. . no such entry found :-(")
                 time.sleep(3)
