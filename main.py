@@ -7,16 +7,22 @@ def GetDetails():
     data1=[]
     while len(data1) !=4 :
         os.system('clear')
-        print("Enter the details in the given format with spaces [BugName ProjectName BugSection Importance] ")
-        data1 = input().split(' ')
-        print("Enter the description for the bug:")
-        data2 = input()
+        print("Enter the following data:\n")
+        data1.append(input("Bug Name:"))
+        data1.append(input("Project Name:"))
+        data1.append(input("Bug Section:"))
+        data1.append(input("Importance:"))
+        data1.append(input("Description:"))
+        flag=0
         #print(data1)
-        if len(data1) != 4:
-            print("Invalid Data Entry! Please enter again!")
+        for i in data1:
+            if len(i) == 0: 
+                flag=1
+        if flag == 1:
+            print("\nInvalid Data Entry! Please enter again!")
             time.sleep(2)
-        else:
-            data1.append(data2)
+                
+        if flag == 0:
             break
     return data1
 
@@ -45,13 +51,18 @@ while True:
         print('')
     while True:
         print("Main Menu:")
-        print("\n 1. Add a bug\n 2. View all bugs\n 3. Modify a bug\n 4. Exit\n\nOption:",end='')
+        print("\n 1. Add a bug\n 2. View all bugs\n 3. Modify a bug\n 4. Exit\n\n>",end='')
         try:
             num = int(input())
         except:
+            os.system('clear')
             print("Invalid Entry!")
         if num == 1:
+            #try:
             control.AddData(GetDetails())
+            #except:
+            #    os.system('clear')
+            #    print("Input Error. .\n")
         elif num == 2:
             control.DisplayData()
         elif num == 3:
@@ -60,18 +71,22 @@ while True:
             print("1:BUGNAME      2:BUG_SECTION    3:DESCRIPTION")
             print("4:IMPORTANCE   5:PROJECT_NAME   6:CLOSING_DATE")
             print("\n\nEnter the BUG_ID of the entry:")
-            bug_id=int(input())
-            if control.CheckEntry(bug_id):
-                print("\n\nEnter the index number of column to be edited:")
-                data_index = input().split(' ')
-                data_index = [int(i) for i in data_index]
-                print("Enter the data in appropriate format ans spaces:")
-                data_value = input().split(' ')
-                control.ModifyData(data_index,data_value,bug_id)
-            else:
-                print("Sorry. . no such entry found :-(")
-                time.sleep(3)
+            try:
+                bug_id=int(input())
+                if control.CheckEntry(bug_id):
+                    print("\n\nEnter the index number of column to be edited:")
+                    data_index = input().split(' ')
+                    data_index = [int(i) for i in data_index]
+                    print("Enter the data in appropriate format ans spaces:")
+                    data_value = input().split(' ')
+                    control.ModifyData(data_index,data_value,bug_id)
+                else:
+                    print("Sorry. . no such entry found :-(")
+                    time.sleep(3)
+                    os.system('clear')
+            except:
                 os.system('clear')
+                print("Input Error. .")
         elif num == 4:
             control.CloseConnection()
             os.system('clear')

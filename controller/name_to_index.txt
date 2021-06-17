@@ -1,3 +1,1 @@
- bugtracker-cli  
- u
- display calculation database h
+ bugtracker-cli

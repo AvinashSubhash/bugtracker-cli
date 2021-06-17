@@ -5,14 +5,22 @@ from model import database_handler
 class DataManipulation:
 
     def __init__(self):
+        self.year = 0
+        self.month = 0
+        self.day = 0#str(time.localtime()[2])
+        self.hour = 0#str(time.localtime()[3])
+        self.minute = 0#str(time.localtime()[4])
+        self.seconds = 0#str(time.localtime()[5])
+        self.db = 0
+        #print(self.seconds)
+
+    def CalculateID(self):
         self.year = str(time.localtime()[0])
         self.month = str(time.localtime()[1])
         self.day = str(time.localtime()[2])
         self.hour = str(time.localtime()[3])
         self.minute = str(time.localtime()[4])
         self.seconds = str(time.localtime()[5])
-        self.db = 0
-        #print(self.seconds)
 
     def InitializeTables(self):
         self.db = database_handler.DatabaseHandler()
@@ -20,6 +28,7 @@ class DataManipulation:
 
     def IDGenerattor(self):
         key =''
+        self.CalculateID()
         if int(self.seconds) < 10:
             key += '0'
         key += self.seconds
@@ -68,46 +77,34 @@ class DataManipulation:
         file1 = open('controller/name_to_index.txt','r')
         [projectnames,bugsections] = file1.readlines()
         file1.close()
-        """file1 = open('controller/name_to_index.txt','w')
-        file1.seek(0,0)
-        projectnames = projectnames.split(' ')
-        bugsections = bugsections.split(' ')
-        pn=''
-        for i in projectnames:
-            pn += i
-            pn += ' '
-        bs=''
-        for i in bugsections:
-            bs += i
-            bs += ' '
-        if projectname not in projectnames:
-            print("New Project Identified, Adding to List. . .")
-            pn += str(projectname)
-        if bugsection not in bugsections:
-            print("New Bug Section Identified, Adding to list. . .")
-            bs += str(bugsection)
-        file1.write(str(pn)+"\n"+str(bs))
-        file1.close()"""
-
 
     def DisplayData(self):
         os.system('clear')
-        data_1 = self.db.GetData()
+        [data_1,data_t] = self.db.GetData()
         if len(data_1) > 0:
-            data_1 = data_1[0]
-            print("BUG_ID: ",data_1[0],"    ",end='')
-            print("BUG_NAME: ",data_1[1])
-            print("BUG_SECTION: ",data_1[2])
-            print("DESCRIPTION: ",data_1[3])
-            print("IMPORTANCE:  ",data_1[4])
-            print("PROJECT_NAME:",data_1[5])
-        print("Empty Database. .")
-        print("")
-        print("")
+            data_3=0
+            for i in range(len(data_1)):
+                data_2 = data_1[i]
+                for j in data_t:
+                    if j[0] == data_2[0]:
+                        data_3 = j
+                
+                print("\nBug ID: ",data_2[0],"    ",end='')
+                print("Bug Section: ",data_2[1])
+                print("Bug Section: ",data_2[2])
+                print("Description: ",data_2[3])
+                print("Importance:  ",data_2[4])
+                print("Project Name:",data_2[5])
+                print("Opening Date:",data_3[1])
+                print("Closing Date: ",data_3[2])
+                print("No. of Days Active: ",data_3[3],"\n")
+            print("*************************\n")
+        else:
+            print("Empty Database. .")
         #will take raw data from database and then display it in a table format.
 
     def AddData(self,data_list):
-        self.NameToIndex(data_list[1],data_list[2])
+        #self.NameToIndex(data_list[1],data_list[2])
         data_list.append(self.IDGenerattor())
         data_list.append(self.OpeningDate())
         data_list.append('-')
