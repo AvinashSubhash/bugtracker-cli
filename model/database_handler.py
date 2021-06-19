@@ -1,5 +1,6 @@
 import sqlite3
 import time
+import os
 
 class DatabaseHandler:
 
@@ -10,7 +11,7 @@ class DatabaseHandler:
 
     def CreateDatabase(self):
     
-        self.db.execute('CREATE TABLE BUGTRACKER (BUG_ID INT PRIMARY KEY,BUG_NAME VARCHAR NOT NULL, BUG_SECTION INT NOT NULL,DESCRIPTION VARCHAR, IMPORTANCE INT NOT NULL,PROJECT_NAME INT NOT NULL);')
+        self.db.execute('CREATE TABLE BUGTRACKER (BUG_ID INT PRIMARY KEY,BUG_NAME VARCHAR NOT NULL, BUG_SECTION REAL NOT NULL,DESCRIPTION VARCHAR, IMPORTANCE INT NOT NULL,PROJECT_NAME INT NOT NULL);')
         self.db.execute('CREATE TABLE DATE (BUG_ID INT NOTL NULL, OPENING_DATE REAL NOT NULL, CLOSING_DATE REAL NOT NULL,NO_DAYS INT NOT NULL, FOREIGN KEY (BUG_ID) REFERENCES BUGTRACKER (BUG_ID));')
         print('\n---database creation successful---\n')
     
@@ -24,19 +25,20 @@ class DatabaseHandler:
         
         #print("Database Handler Insert function accessed. .")
         print(data)
-        #try:
-        string1 = str("INSERT INTO BUGTRACKER VALUES("+str(data[5])+", '"+str(data[0])+"', "+str(2)+", '"+str(data[4])+"', "+str(5)+", '"+str(data[1])+"');")
-        #print(string1)
-        string2 = str("INSERT INTO DATE VALUES("+str(data[5])+", '"+str(data[-3])+"', '"+str(data[-2])+"', "+str(0)+");")
-        print(string2)
-        #time.sleep(5)
-        self.db.execute(string1)
-        self.db.execute(string2)
+        try:
+            string1 = str("INSERT INTO BUGTRACKER VALUES("+str(data[5])+", '"+str(data[0])+"', "+str(2)+", '"+str(data[4])+"', "+str(data[3])+", '"+str(data[1])+"');")
+            #print(string1)
+            string2 = str("INSERT INTO DATE VALUES("+str(data[5])+", '"+str(data[-3])+"', '"+str(data[-2])+"', "+str(0)+");")
+            #print(string2)
+            #time.sleep(5)
+            self.db.execute(string1)
+            self.db.execute(string2)
             
-        #except:
-        #    print("Data could not be added. .")
+        except:
+            os.system('clear')
+            print("Data could not be added. .")
 
-    def UpdateDatabase(self):
+    def UpdateDatabase(self,days):
         pass
         #print("Default modifier function for changing dated and values")  
 
@@ -47,8 +49,18 @@ class DatabaseHandler:
     
     def ModifyData(self,data_index,data_value,id):
         #print("Database Handler Modify function accessed. .")
-        print("Data Index: ",data_index)
-        print("Data Values: ",data_value)
+        for i in range(len(data_index)):
+            if data_index[i] <= 5:
+                string3 = str("UPDATE BUGTRACKER SET "+str(self.column_list[int(data_index[i])+1])+" = '"+str(data_value[i])+"' WHERE BUG_ID = "+str(id)+";")
+                print(string3)
+                self.db.execute(string3)
+            else:
+                string3 = str("UPDATE DATE SET "+str(self.column_list[int(data_index[i])])+" = '"+str(data_value[i])+"' WHERE BUG_ID = "+str(id)+";")
+                print(string3)
+                self.db.execute(string3)
+        self.db.commit()
+        #print("Data Index: ",data_index)
+        #print("Data Values: ",data_value)
         self.db.execute("")
 
 

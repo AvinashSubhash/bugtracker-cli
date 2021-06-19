@@ -90,7 +90,7 @@ class DataManipulation:
                         data_3 = j
                 
                 print("\nBug ID: ",data_2[0],"    ",end='')
-                print("Bug Section: ",data_2[1])
+                print("Bug Name: ",data_2[1])
                 print("Bug Section: ",data_2[2])
                 print("Description: ",data_2[3])
                 print("Importance:  ",data_2[4])
