@@ -38,8 +38,12 @@ class DatabaseHandler:
             os.system('clear')
             print("Data could not be added. .")
 
-    def UpdateDatabase(self,days):
-        pass
+    def UpdateDatabase(self,data_set):
+        for i in range(len(data_set)):
+            string4 = str('UPDATE DATE SET NO_DAYS = '+str(data_set[i][3])+' WHERE BUG_ID = '+str(data_set[i][4])+';')
+            #print(string4)
+            self.db.execute(string4)
+        self.db.commit()
         #print("Default modifier function for changing dated and values")  
 
     def CheckEntry(self):

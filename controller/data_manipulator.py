@@ -1,5 +1,6 @@
 
 import time
+from datetime import date
 import os 
 from model import database_handler
 class DataManipulation:
@@ -50,13 +51,31 @@ class DataManipulation:
 
         return key
 
+    def CalculateDateDifference(self,old_date,current_date):
+        old_date_i = date(int(old_date[2]),int(old_date[1]),int(old_date[0]))
+        new_date_i = date(int(current_date[0]),int(current_date[1]),int(current_date[2]))
+        diff = new_date_i - old_date_i
+        return diff.days
+
+
     def OpeningDate(self):
         return ""+str(time.localtime()[2])+"-"+str(time.localtime()[1])+"-"+str(time.localtime()[0])
 
     def UpdateDatabase(self):
         self.db = database_handler.DatabaseHandler()
-        #print("Data Manipulator Update Database Function Accessed. .")
-        self.db.UpdateDatabase()
+        data_set = []
+        [_,data] = self.db.GetData()
+        self.CalculateID()
+        current_date = [self.year,self.month,self.day]
+        for i in range(len(data)):
+            if data[i][2] == '-':
+                temp = data[i][1].split('-')
+                days = self.CalculateDateDifference(temp,current_date)
+                temp.append(days)
+                temp.append(data[i][0])
+                data_set.append(temp)
+
+        self.db.UpdateDatabase(data_set)
 
     def DisplayNames(self):
         file1 = open('controller/name_to_index.txt','r')

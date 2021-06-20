@@ -38,7 +38,7 @@ Sample Input:
 		bug-display-error bugtracker-cli display high
 		Bug-tracker is not displaying the data in correct format. 
 
-Bugs: 1. Update function not present.
+Bugs: 1. Update function not present. (bug fixed)
 	  2. Wrning for importance data type
 	  3. Show bug_id of all bugs with name at modify section
 	  4. Add Close bug function.

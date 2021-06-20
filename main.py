@@ -37,18 +37,17 @@ while True:
     #print('*')
 
     files = list(os.listdir('model'))
-    if 'bug-tracker.db' not in files:
-        print("")
-        print("Initializing Database. . .")
-        control.InitializeTables()
-        #print('*')
-    else:
-        
-        #print('*')
+    if 'bug-tracker.db' in files:
         print('')
         print("Updating Database. . .")
         control.UpdateDatabase()
         print('')
+        #print('*')
+    else:
+        #print('*')
+        print("")
+        print("Initializing Database. . .")
+        control.InitializeTables()
     while True:
         print("Main Menu:")
         print("\n 1. Add a bug\n 2. View all bugs\n 3. Modify a bug\n 4. Exit\n\n>",end='')
