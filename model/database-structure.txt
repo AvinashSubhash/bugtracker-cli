@@ -4,7 +4,7 @@ Database Tables
 		Columns:
 			1. BUG_ID       ##datatype: 12 Digit integer
 			2. Bug_Name     ##datatype: 20 char string
-			3. Bug_Section  ##datatype: Single Digit Integer
+			3. Bug_Section  ##datatype: Varchar
 			4. Description  ##datatype: max 100 char string
 			5. Importance   ##datatype: Single Digit Integer (1-5)
 			6. Project_Name ##datatype: 'n' digit Integer
@@ -20,7 +20,7 @@ sqlite3 Datatype:
 
 	BUG_ID: INT
 	Bug_Name: VARCHAR
-	Bug_Section: INT
+	Bug_Section: REAL
 	Description: VARCHAR
 	Importance: INT
 	Project_Name: INT
@@ -39,6 +39,6 @@ Sample Input:
 		Bug-tracker is not displaying the data in correct format. 
 
 Bugs: 1. Update function not present. (bug fixed)
-	  2. Wrning for importance data type
+	  2. Warning for importance data type (bug fixed)
 	  3. Show bug_id of all bugs with name at modify section
 	  4. Add Close bug function.

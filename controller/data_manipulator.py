@@ -112,7 +112,7 @@ class DataManipulation:
                 print("Bug Name: ",data_2[1])
                 print("Bug Section: ",data_2[2])
                 print("Description: ",data_2[3])
-                print("Importance:  ",data_2[4])
+                print("Importance:  ",('#'*data_2[4]))
                 print("Project Name:",data_2[5])
                 print("Opening Date:",data_3[1])
                 print("Closing Date: ",data_3[2])

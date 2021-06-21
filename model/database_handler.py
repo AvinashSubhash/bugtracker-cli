@@ -26,7 +26,7 @@ class DatabaseHandler:
         #print("Database Handler Insert function accessed. .")
         print(data)
         try:
-            string1 = str("INSERT INTO BUGTRACKER VALUES("+str(data[5])+", '"+str(data[0])+"', "+str(2)+", '"+str(data[4])+"', "+str(data[3])+", '"+str(data[1])+"');")
+            string1 = str("INSERT INTO BUGTRACKER VALUES("+str(data[5])+", '"+str(data[0])+"', '"+str(data[2])+"', '"+str(data[4])+"', "+str(data[3])+", '"+str(data[1])+"');")
             #print(string1)
             string2 = str("INSERT INTO DATE VALUES("+str(data[5])+", '"+str(data[-3])+"', '"+str(data[-2])+"', "+str(0)+");")
             #print(string2)
