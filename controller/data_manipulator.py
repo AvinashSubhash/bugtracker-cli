@@ -139,6 +139,34 @@ class DataManipulation:
             return True
         return False
     
+    def CloseBug(self):
+        os.system('clear')
+        [data_1,data_2] = self.db.GetData()
+        #print("Open Bugs: \n")
+        count=0
+        flag=0
+        for i in range(len(data_1)):
+            if data_2[i][2] == '-':
+                count += 1
+                print("Bug ID: ",data_1[i][0])
+                print("Bug Name: ",data_1[i][1],"\n")
+        print("\nCurrently Active Bugs: ",count,"\n\n")
+        print("Enter the Bug ID to close: ")
+        id_close = int(input())
+        for i in range(len(data_2)):
+            if int(data_2[i][0]) == id_close:
+                flag=1
+                close_date = self.OpeningDate()
+                self.db.ModifyData([6],[close_date],id_close)
+                os.system('clear')
+                print("Bug successfuly closed. .\n")
+
+        if flag == 0:
+            os.system('clear')
+            print("Bug not found!!\n")
+
+
+    
     def CloseConnection(self):
         self.db.Disconnect()
         

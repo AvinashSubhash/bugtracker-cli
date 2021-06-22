@@ -69,7 +69,7 @@ while True:
         control.InitializeTables()
     while True:
         print("Main Menu:")
-        print("\n 1. Add a bug\n 2. View all bugs\n 3. Modify a bug\n 4. Exit\n\n>",end='')
+        print("\n 1. Add a bug\n 2. View all bugs\n 3. Modify a bug\n 4. Close a bug\n 5. Exit\n\n>",end='')
         try:
             num = int(input())
         except:
@@ -106,6 +106,8 @@ while True:
             #    os.system('clear')
             #    print("Input Error. .")
         elif num == 4:
+            control.CloseBug()
+        elif num == 5:
             control.CloseConnection()
             os.system('clear')
             exit(0)
