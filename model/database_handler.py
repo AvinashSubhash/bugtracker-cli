@@ -55,7 +55,7 @@ class DatabaseHandler:
         #print("Database Handler Modify function accessed. .")
         for i in range(len(data_index)):
             if data_index[i] <= 5:
-                string3 = str("UPDATE BUGTRACKER SET "+str(self.column_list[int(data_index[i])+1])+" = '"+str(data_value[i])+"' WHERE BUG_ID = "+str(id)+";")
+                string3 = str("UPDATE BUGTRACKER SET "+str(self.column_list[int(data_index[i])])+" = '"+str(data_value[i])+"' WHERE BUG_ID = "+str(id)+";")
                 print(string3)
                 self.db.execute(string3)
             else:

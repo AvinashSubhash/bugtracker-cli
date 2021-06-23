@@ -131,8 +131,27 @@ class DataManipulation:
         self.db.InsertData(data_list)
         #will change the data type into appropriate format and pass it to datbase handler
 
-    def ModifyData(self,data_index,data_value,id):
-        self.db.ModifyData(data_index,data_value,id)
+    def ModifyData(self):
+        [data_1,_] = self.db.GetData()
+        os.system('clear')
+        print("Column names: ")
+        print("1:BUGNAME      2:BUG_SECTION    3:DESCRIPTION")
+        print("4:IMPORTANCE   5:PROJECT_NAME   6:CLOSING_DATE\n")
+        for i in range(len(data_1)):
+            print("\nBug ID: ",data_1[i][0],"   Bug Name: ",data_1[i][1])
+        print("\n\nEnter the BUG_ID of the entry:")
+        bug_id=int(input())
+        if self.CheckEntry(bug_id):
+                print("\n\nEnter the index number of column to be edited:")
+                data_index = input().split(' ')
+                data_index = [int(i) for i in data_index]
+                print("Enter the data in appropriate format ans spaces:")
+                data_value = input().split(' ')
+        else:
+                print("Sorry. . no such entry found :-(")
+                time.sleep(3)
+                os.system('clear')
+        self.db.ModifyData(data_index,data_value,bug_id)
 
     def CheckEntry(self,bug_id):
         if bug_id in self.db.CheckEntry():
