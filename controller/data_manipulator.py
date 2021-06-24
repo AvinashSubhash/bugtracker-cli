@@ -1,4 +1,4 @@
-
+from graphics import Graphics
 import time
 from datetime import date
 import os 
@@ -98,7 +98,8 @@ class DataManipulation:
         file1.close()
 
     def DisplayData(self):
-        os.system('clear')
+        #os.system('clear')
+        Graphics.DisplayGraphics()
         [data_1,data_t] = self.db.GetData()
         if len(data_1) > 0:
             data_3=0
@@ -133,25 +134,30 @@ class DataManipulation:
 
     def ModifyData(self):
         [data_1,_] = self.db.GetData()
-        os.system('clear')
+        #os.system('clear')
+        Graphics.DisplayGraphics()
         print("Column names: ")
         print("1:BUGNAME      2:BUG_SECTION    3:DESCRIPTION")
         print("4:IMPORTANCE   5:PROJECT_NAME   6:CLOSING_DATE\n")
         for i in range(len(data_1)):
             print("\nBug ID: ",data_1[i][0],"   Bug Name: ",data_1[i][1])
         print("\n\nEnter the BUG_ID of the entry:")
-        bug_id=int(input())
-        if self.CheckEntry(bug_id):
-                print("\n\nEnter the index number of column to be edited:")
-                data_index = input().split(' ')
-                data_index = [int(i) for i in data_index]
-                print("Enter the data in appropriate format ans spaces:")
-                data_value = input().split(' ')
-        else:
-                print("Sorry. . no such entry found :-(")
-                time.sleep(3)
-                os.system('clear')
-        self.db.ModifyData(data_index,data_value,bug_id)
+        try:
+            bug_id=int(input())
+            if self.CheckEntry(bug_id):
+                    print("\n\nEnter the index number of column to be edited:")
+                    data_index = input().split(' ')
+                    data_index = [int(i) for i in data_index]
+                    print("Enter the data in appropriate format ans spaces:")
+                    data_value = input().split(' ')
+            else:
+                    print("Sorry. . no such entry found :-(")
+                    time.sleep(3)
+                    os.system('clear')
+            self.db.ModifyData(data_index,data_value,bug_id)
+        except:
+            Graphics.DisplayGraphics()
+            print('\033[91m'+"Input Error . ."+'\033[0m'+"\n")
 
     def CheckEntry(self,bug_id):
         if bug_id in self.db.CheckEntry():
@@ -159,7 +165,8 @@ class DataManipulation:
         return False
     
     def CloseBug(self):
-        os.system('clear')
+        #os.system('clear')
+        Graphics.DisplayGraphics()
         [data_1,data_2] = self.db.GetData()
         #print("Open Bugs: \n")
         count=0
@@ -171,21 +178,25 @@ class DataManipulation:
                 print("Bug Name: ",data_1[i][1],"\n")
         print("\nCurrently Active Bugs: ",count,"\n\n")
         print("Enter the Bug ID to close: ")
-        id_close = int(input())
-        for i in range(len(data_2)):
-            if int(data_2[i][0]) == id_close:
-                flag=1
-                close_date = self.OpeningDate()
-                self.db.ModifyData([6],[close_date],id_close)
-                os.system('clear')
-                print("Bug successfuly closed. .\n")
+        try:
+            id_close = int(input())
+            for i in range(len(data_2)):
+                if int(data_2[i][0]) == id_close:
+                    flag=1
+                    close_date = self.OpeningDate()
+                    self.db.ModifyData([6],[close_date],id_close)
+                    #os.system('clear')
+                    Graphics.DisplayGraphics()
+                    print("Bug successfuly closed. .\n")
 
-        if flag == 0:
-            os.system('clear')
-            print("Bug not found!!\n")
-
-
-    
+            if flag == 0:
+                #os.system('clear')
+                Graphics.DisplayGraphics()
+                print("Bug not found!!\n")
+        except:
+            Graphics.DisplayGraphics()
+            print('\033[91m'+"Input Error . ."+'\033[0m'+"\n")
+               
     def CloseConnection(self):
         self.db.Disconnect()
         

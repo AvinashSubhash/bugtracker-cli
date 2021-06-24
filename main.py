@@ -1,12 +1,14 @@
 import os
 import time
 from controller import data_manipulator
+from graphics import Graphics
 #print('*')
 control = data_manipulator.DataManipulation()
 def GetDetails():
     data1=[]
     while len(data1) !=4 :
-        os.system('clear')
+        #os.system('clear')
+        Graphics.DisplayGraphics()
         print("Enter the following data:\n")
         data1.append(input("Bug Name:"))
         data1.append(input("Project Name:"))
@@ -28,33 +30,13 @@ def GetDetails():
 
 #print('*')
 db = 0
+
 while True:
 
     count=0
-    os.system('clear')
-    #path = os.getcwd()
-    print("\n       8                      o                      8                   ")
-    print("       8                      8                      8                   ")
-    print("       8oPYo. o    o .oPYo.  o8P oPYo. .oPYo. .oPYo. 8  .o  .oPYo. oPYo. ")
-    print("       8    8 8    8 8    8   8  8  `' .oooo8 8    ' 8oP'   8oooo8 8  `' ")
-    print("       8    8 8    8 8    8   8  8     8    8 8    . 8 `b.  8.     8     ")
-    print("       `YooP' `YooP' `YooP8   8  8     `YooP8 `YooP' 8  `o. `Yooo' 8     ")
-    print("       :.....::.....::....8 ::..:..:::::.....::.....:..::...:.....:..::::")
-    print("       ::::::::::::::::ooP'.:::::::::::::::::::::::::::::::::::::::::::::")
-    print("       ::::::::::::::::...:::::::::::::::::::::::::::::::::::::::::::::::")
-    print("                                              ")
-    print("                                         8  o ")
-    print("                                         8    ")
-    print("                                  .oPYo. 8 o8 ")
-    print("                                  8    ' 8  8 ")
-    print("                                  8    . 8  8 ")
-    print("                                  `YooP' 8  8 ")
-    print("                                  :.....:..:..")
-    print("                                  ::::::::::::")
-    print("                                  ::::::::::::\n\n")
-    print("BUGTRACKER-CLI v1.0")
+    
     #print('*')
-
+    Graphics.DisplayGraphics()
     files = list(os.listdir('model'))
     if 'bug-tracker.db' in files:
         print('')
@@ -73,14 +55,16 @@ while True:
         try:
             num = int(input())
         except:
-            os.system('clear')
-            print("Invalid Entry!")
+            #os.system('clear')
+            Graphics.DisplayGraphics()
+            print('\033[91m'+"Input Error . ."+'\033[0m'+"\n")
         if num == 1:
             try:
                 control.AddData(GetDetails())
             except:
-                os.system('clear')
-                print("Input Error. .\n")
+                #os.system('clear')
+                Graphics.DisplayGraphics()
+                print('\033[91m'+"Input Error . ."+'\033[0m'+"\n")
         elif num == 2:
             control.DisplayData()
         elif num == 3:
@@ -92,8 +76,9 @@ while True:
             os.system('clear')
             exit(0)
         else:
-            os.system('clear')
+            #os.system('clear')
+            Graphics.DisplayGraphics()
             #control.DisplayNames()
-            print("\n Invalid Option!! \n")
+            print('\033[91m'+"Invalid Option . ."+'\033[0m'+"\n")
     break
 

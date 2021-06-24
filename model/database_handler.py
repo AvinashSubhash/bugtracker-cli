@@ -1,4 +1,5 @@
 import sqlite3
+from graphics import Graphics
 import time
 import os
 
@@ -35,8 +36,9 @@ class DatabaseHandler:
             self.db.execute(string2)
             
         except:
-            os.system('clear')
-            print("Data could not be added. .")
+            #os.system('clear')
+            Graphics.DisplayGraphics()
+            print('\033[91m'+"Data could not be added. ."+'\033[0m')
 
     def UpdateDatabase(self,data_set):
         for i in range(len(data_set)):

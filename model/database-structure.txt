@@ -40,5 +40,5 @@ Sample Input:
 
 Bugs: 1. Update function not present. (bug fixed)
 	  2. Warning for importance data type (bug fixed)
-	  3. Show bug_id of all bugs with name at modify section
+	  3. Show bug_id of all bugs with name at modify section (bug fixed)
 	  4. Add Close bug function. (bug fixed)
