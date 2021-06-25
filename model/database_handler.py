@@ -25,7 +25,7 @@ class DatabaseHandler:
     def InsertData(self,data):
         
         #print("Database Handler Insert function accessed. .")
-        print(data)
+        #print(data)
         try:
             string1 = str("INSERT INTO BUGTRACKER VALUES("+str(data[5])+", '"+str(data[0])+"', '"+str(data[2])+"', '"+str(data[4])+"', "+str(data[3])+", '"+str(data[1])+"');")
             #print(string1)
@@ -34,7 +34,7 @@ class DatabaseHandler:
             #time.sleep(5)
             self.db.execute(string1)
             self.db.execute(string2)
-            
+            print("Data added . .\n")
         except:
             #os.system('clear')
             Graphics.DisplayGraphics()

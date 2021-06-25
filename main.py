@@ -15,6 +15,7 @@ def GetDetails():
         data1.append(input("Bug Section:"))
         data1.append(input("Importance (Only integer values between 1 and 5) :"))
         data1.append(input("Description:"))
+        Graphics.DisplayGraphics()
         flag=0
         #print(data1)
         for i in data1:
