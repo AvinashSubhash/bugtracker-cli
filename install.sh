@@ -1,3 +1,15 @@
+clear
+echo "Welcome to Bugtracker v1.0!"
+echo ""
+echo "Adding Shortcut to bashrc . ."
+echo ""
 curr_path=$PWD;
-echo $curr_path;
-echo 'alias bugtracker="cd "$curr_path" ; python3 main.py ; cd ~" ' 
+install_command="alias bugtrackerd=\"cd $curr_path ; python3 main.py ; cd ~ \" "
+#echo $install_command
+#echo $install_command >> ~/.bashrc
+source ~/.bashrc
+clear
+echo "Welcome to Bugtracker v1.0!"
+echo ""
+echo "Installation Successfull ! !"
+echo ""
