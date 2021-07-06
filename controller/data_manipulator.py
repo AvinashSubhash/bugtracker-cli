@@ -108,16 +108,32 @@ class DataManipulation:
                 for j in data_t:
                     if j[0] == data_2[0]:
                         data_3 = j
-                
-                print("\nBug ID: ",data_2[0],"    ",end='')
-                print("Bug Name: ",data_2[1])
-                print("Bug Section: ",data_2[2])
-                print("Description: ",data_2[3])
-                print("Importance:  ",('#'*data_2[4]))
-                print("Project Name:",data_2[5])
-                print("Opening Date:",data_3[1])
-                print("Closing Date: ",data_3[2])
-                print("No. of Days Active: ",data_3[3],"\n")
+                if data_3[2]!= '-':
+                    print("\nBug ID: ",data_2[0],"    ",end='')
+                    print("Bug Name: ",data_2[1])
+                    print("Bug Section: ",data_2[2])
+                    print("Description: ",data_2[3])
+                    print("Importance:  ",('#'*data_2[4]))
+                    print("Project Name:",data_2[5])
+                    print("Opening Date:",data_3[1])
+                    print("Closing Date: ",data_3[2])
+                    print("No. of Days Active: ",data_3[3],"\n")
+            print("*************************\n\nCurrently Open Bugs -->\n\n")
+            for i in range(len(data_1)):
+                data_2 = data_1[i]
+                for j in data_t:
+                    if j[0] == data_2[0]:
+                        data_3 = j
+                if data_3[2] == '-':
+                    print("\nBug ID: ",data_2[0],"    ",end='')
+                    print("Bug Name: ",data_2[1])
+                    print("Bug Section: ",data_2[2])
+                    print("Description: ",data_2[3])
+                    print("Importance:  ",('#'*data_2[4]))
+                    print("Project Name:",data_2[5])
+                    print("Opening Date:",data_3[1])
+                    print("Closing Date: ",data_3[2])
+                    print("No. of Days Active: ",data_3[3],"\n")
             print("*************************\n")
         else:
             print("Empty Database. .")
