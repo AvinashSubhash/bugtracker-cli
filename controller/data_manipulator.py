@@ -162,6 +162,8 @@ class DataManipulation:
     def CheckEntry(self,bug_id):
         if bug_id in self.db.CheckEntry():
             return True
+        print(self.db.CheckEntry())
+        time.sleep(100)
         return False
     
     def CloseBug(self):
