@@ -21,4 +21,4 @@ def DisplayGraphics():
     print("                                  :.....:..:..")
     print("                                  ::::::::::::")
     print("                                  ::::::::::::\n\n")
-    print("BUGTRACKER-CLI v1.0\n"+'\033[0m')
+    print("BUGTRACKER-CLI v0.1.2\n"+'\033[0m')
