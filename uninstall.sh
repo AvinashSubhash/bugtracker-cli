@@ -1,0 +1,1 @@
+yes | rm -R /home/$USER/.bugtracker-files 

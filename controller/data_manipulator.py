@@ -136,7 +136,7 @@ class DataManipulation:
                     print("No. of Days Active: ",data_3[3],"\n")
             print("*************************\n")
         else:
-            print("Empty Database. .")
+            print("\033[91mEmpty Database. .\033[0m\n")
         #will take raw data from database and then display it in a table format.
 
     def AddData(self,data_list):
