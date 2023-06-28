@@ -8,6 +8,9 @@ then
 fi
 mkdir /home/$USER/.bugtracker-files
 cp -R $PWD /home/$USER/.bugtracker-files/
-export PATH=$PATH:/home/$USER/.bugtracker-files/bugtracker-cli/
-echo "PATH=\$PATH:/home/$USER/.bugtracker-files/bugtracker-cli/" >> /home/$USER/.bashrc
+if ! grep -Fxq "PATH=\$PATH:/home/$USER/.bugtracker-files/bugtracker-cli/" /home/$USER/.bashrc
+then
+    export PATH=$PATH:/home/$USER/.bugtracker-files/bugtracker-cli/
+    echo "PATH=\$PATH:/home/$USER/.bugtracker-files/bugtracker-cli/" >> /home/$USER/.bashrc
+fi
 exit
