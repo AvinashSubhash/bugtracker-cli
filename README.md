@@ -15,3 +15,6 @@ You are ready to go! !
 The Command for accessing bugtracker-cli is ```bugtracker```
 
 Currently bugtracker-cli supports only menu driven functioning. More features to come soon . .
+
+
+.
